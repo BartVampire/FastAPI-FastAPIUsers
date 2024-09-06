@@ -51,6 +51,8 @@ class AccessTokenConfig(BaseModel):
     """
 
     lifetime_seconds: int = 3600  # Время жизни токенов
+    reset_password_token_secret: str  # Секретный ключ для сброса пароля
+    verification_token_secret: str  # Секретный ключ для верификации аккаунта
 
 
 class Settings(BaseSettings):
