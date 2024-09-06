@@ -11,12 +11,18 @@ class RunConfiguration(BaseModel):
     port: int = 8000
 
 
+class ApiV1Prefix(BaseModel):
+    prefix: str = "/v1"
+    users: str = "/users"
+
+
 class ApiPrefix(BaseModel):
     """
     Префикс для API
     """
 
     prefix: str = "/api"
+    v1: ApiV1Prefix = ApiV1Prefix()
 
 
 class DatabaseConfig(BaseModel):
@@ -39,6 +45,13 @@ class DatabaseConfig(BaseModel):
     }  # Правила именования таблиц в БД
 
 
+class AccessTokenConfig(BaseModel):
+    """
+    Конфигурация токенов доступа
+    """
+    lifetime_seconds: int = 3600  # Время жизни токенов
+
+
 class Settings(BaseSettings):
     """
     Настройки приложения
@@ -53,6 +66,9 @@ class Settings(BaseSettings):
     run: RunConfiguration = RunConfiguration()  # Конфигурация запуска приложения
     api: ApiPrefix = ApiPrefix()  # Конфигурация префикса для API
     db: DatabaseConfig
+    access_token: AccessTokenConfig = (
+        AccessTokenConfig()
+    )  # Конфигурация токенов доступа
 
 
 settings = Settings()
