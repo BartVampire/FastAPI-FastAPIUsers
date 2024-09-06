@@ -25,6 +25,20 @@ class ApiPrefix(BaseModel):
     prefix: str = "/api"
     v1: ApiV1Prefix = ApiV1Prefix()
 
+    @property
+    def bearer_token_url(self) -> str:
+        #api/v1/auth/login
+        parts = (self.prefix, self.v1.prefix, self.v1.auth, "/login")
+        path = ''.join(parts)
+        return path.removeprefix("/")
+
+
+class SettingsConfigDict(SettingsConfigDict):
+    env_file: str = ".env"
+    case_sensitive: bool = False
+    env_nested_delimiter: str = "__"
+    env_prefix: str = "FASTAPI__"
+
 
 class DatabaseConfig(BaseModel):
     """
@@ -70,9 +84,7 @@ class Settings(BaseSettings):
     run: RunConfiguration = RunConfiguration()  # Конфигурация запуска приложения
     api: ApiPrefix = ApiPrefix()  # Конфигурация префикса для API
     db: DatabaseConfig
-    access_token: AccessTokenConfig = (
-        AccessTokenConfig()
-    )  # Конфигурация токенов доступа
+    access_token: AccessTokenConfig  # Конфигурация токенов доступа
 
 
 settings = Settings()
