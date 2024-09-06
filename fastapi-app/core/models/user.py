@@ -8,6 +8,7 @@ from .mixins.id_int_pk import IdIntPrimaryKeyMixin
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
 
+
 class User(BaseModel, IdIntPrimaryKeyMixin, SQLAlchemyBaseUserTable[int]):
     """
     Модель пользователя представляет собой пользователя системы.
