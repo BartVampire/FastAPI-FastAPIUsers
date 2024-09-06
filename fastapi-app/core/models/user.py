@@ -4,12 +4,13 @@ from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable, SQLAlchemyUserD
 from sqlalchemy.orm import Mapped, mapped_column
 from .base_model import BaseModel
 from .mixins.id_int_pk import IdIntPrimaryKeyMixin
+from ..types.user_id_type import UserIdType
 
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
 
 
-class User(BaseModel, IdIntPrimaryKeyMixin, SQLAlchemyBaseUserTable[int]):
+class User(BaseModel, IdIntPrimaryKeyMixin, SQLAlchemyBaseUserTable[UserIdType]):
     """
     Модель пользователя представляет собой пользователя системы.
     Attributes:
