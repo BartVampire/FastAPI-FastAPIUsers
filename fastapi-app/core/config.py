@@ -49,6 +49,7 @@ class AccessTokenConfig(BaseModel):
     """
     Конфигурация токенов доступа
     """
+
     lifetime_seconds: int = 3600  # Время жизни токенов
 
 
