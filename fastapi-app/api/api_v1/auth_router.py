@@ -14,3 +14,9 @@ router.include_router(router=fastapi_users.get_auth_router(authentication_backen
 
 # Регистрация маршрута создания нового пользователя в FastAPI-Users /register
 router.include_router(router=fastapi_users.get_register_router(UserRead, UserCreate))
+
+# Регистрация маршрута подтверждения аккаунта в FastAPI-Users "/verify, /request-verify-token"
+router.include_router(router=fastapi_users.get_verify_router(UserRead))
+
+# Регистрация маршрута сброса пароля в FastAPI-Users "/reset-password, /forgot-password"
+router.include_router(router=fastapi_users.get_reset_password_router())
