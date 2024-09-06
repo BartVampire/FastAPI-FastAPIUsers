@@ -13,6 +13,7 @@ from core.types.user_id_type import UserIdType
 if TYPE_CHECKING:
     from sqlalchemy.ext.asyncio import AsyncSession
 
+
 class AccessToken(BaseModel, SQLAlchemyBaseAccessTokenTable[UserIdType]):
     """
       Модель токена доступа представляет собой токен доступа к системе.
