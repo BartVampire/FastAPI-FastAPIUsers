@@ -10,7 +10,12 @@ router = APIRouter(
 )
 
 # Регистрация маршрутов авторизации в FastAPI-Users /login and /logout
-router.include_router(router=fastapi_users.get_auth_router(authentication_backend))
+router.include_router(
+    router=fastapi_users.get_auth_router(
+        authentication_backend,
+        requires_verification=True,  # Обязательное подтверждение по электронной почте
+    )
+)
 
 # Регистрация маршрута создания нового пользователя в FastAPI-Users /register
 router.include_router(router=fastapi_users.get_register_router(UserRead, UserCreate))
