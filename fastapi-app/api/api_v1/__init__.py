@@ -4,6 +4,7 @@ from fastapi.security import HTTPBearer
 from .users import router as users_router
 from core.config import settings
 from .auth_router import router as auth_router
+from .messages import router as messages_router
 
 """Подключаем модули и регистрируем маршруты в API V1"""
 
@@ -17,3 +18,5 @@ router.include_router(
 router.include_router(
     auth_router
 )  # Регистрируем маршруты из модуля auth с префиксом /api/v1/auth
+
+router.include_router(messages_router)
