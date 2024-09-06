@@ -7,7 +7,7 @@ if TYPE_CHECKING:
 
 
 async def get_user_db(
-    session: Annotated[AsyncSession, Depends(db_helper.session_getter)]
+    session: Annotated["AsyncSession", Depends(db_helper.session_getter)]
 ):
     """
     Получает текущего пользователя из асинхронной сессии базы данных.
