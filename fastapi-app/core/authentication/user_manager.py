@@ -33,7 +33,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, UserIdType]):
         Возвращает:
         - None
         """
-        log.warning("Пользователь зарегистрирован:", user.id)
+        log.warning("Пользователь зарегистрирован: %r", user.id)
 
     async def on_after_forgot_password(
         self, user: User, token: str, request: Optional["Request"] = None
