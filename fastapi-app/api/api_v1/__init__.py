@@ -14,4 +14,3 @@ router.include_router(
 router.include_router(
     auth_router
 )  # Регистрируем маршруты из модуля auth с префиксом /api/v1/auth
-
